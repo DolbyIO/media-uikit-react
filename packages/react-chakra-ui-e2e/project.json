@@ -1,0 +1,28 @@
+{
+  "root": "packages/react-chakra-ui-e2e",
+  "sourceRoot": "packages/react-chakra-ui-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "packages/react-chakra-ui-e2e/cypress.json",
+        "devServerTarget": "react-chakra-ui:storybook"
+      },
+      "configurations": {
+        "ci": {
+          "devServerTarget": "react-chakra-ui:storybook:ci"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/react-chakra-ui-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["react-chakra-ui"]
+}

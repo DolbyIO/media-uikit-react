@@ -1,0 +1,104 @@
+:root {
+  /* Colors */
+  --body-bg-color: var(--base-white);
+  --body-text-color: var(--base-black);
+  --base-black: #1d1f26;
+  --base-white: #ffffff;
+  --primary: var(--primary-500);
+  --primary-100: #f1e6ff;
+  --primary-200: #dcbfff;
+  --primary-300: #c799ff;
+  --primary-400: #b373ff;
+  --primary-500: #9e4dff;
+  --primary-600: #8926ff;
+  --primary-700: #7400ff;
+  --primary-800: #5d00cc;
+  --primary-900: #460099;
+  --blue-primary: var(--blue-500);
+  --blue-100: #adb6cc;
+  --blue-200: #f3f6fc;
+  --blue-300: #d1dbf4;
+  --blue-400: #93b0f4;
+  --blue-500: #628ef4;
+  --blue-600: #3d74f4;
+  --blue-700: #185af4;
+  --blue-800: #003dcc;
+  --blue-900: #002e99;
+  --red-primary: var(--red-500);
+  --red-400: #e65050;
+  --red-500: #d92626;
+  --greyscale-primary: var(--greyscale-500);
+  --greyscale-100: #e6e9f2;
+  --greyscale-200: #cfd5e6;
+  --greyscale-300: #adb6cc;
+  --greyscale-400: #8f99b3;
+  --greyscale-500: #737d99;
+  --greyscale-600: #606980;
+  --greyscale-700: #4d5466;
+  --greyscale-800: #393f4d;
+  --greyscale-900: #262a33;
+  --info-success: #17ce55;
+  --info-information: #1930e5;
+  --info-warning: #f09e00;
+  --info-error: #e31a1a;
+  --gradient-blue-purple-light: linear-gradient(99.69deg, #666afe -10.66%, #ca80ff 114.64%);
+  --gradient-blue-purple: linear-gradient(99.69deg, #3e44fe -10.66%, #bb5cff 114.64%);
+  --gradient-blue-purple-dark: linear-gradient(99.69deg, #2e34e6 -10.66%, #a245e6 114.64%);
+
+  /* Spacing */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+
+  /* Core UI elements */
+  --container-bg-color: var(--body-bg-color);
+
+  --text-input__caption__color: var(--greyscale-600);
+  --text-input__label__color: var(--greyscale-500);
+  /* TODO: Replace (or assign) this colour with a design token */
+  --text-input__input__border-color: #d1dbf4;
+  --text-input__input__color: var(--base-black);
+  --text-input__input-focus__border-color: var(--greyscale-500);
+  --text-input__input--placeholder__color: var(--greyscale-300);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* TODO: */
+}
+
+h1 {
+  /* TODO: */
+}
+
+h2 {
+  /* TODO: */
+}
+
+h3 {
+  /* TODO: */
+}
+
+h4 {
+  /* TODO: */
+}
+
+body {
+  font-size: 0.9375rem;
+  color: var(--base-black);
+}
+
+small {
+  /* TODO: */
+}
