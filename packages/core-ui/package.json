@@ -1,0 +1,23 @@
+{
+  "name": "@dolbyio/core-ui",
+  "version": "0.0.1",
+  "packageManager": "yarn@3.1.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "watch 'yarn run build' src",
+    "build": "yarn concurrently \"yarn:build:*\"",
+    "build:js": "tsc",
+    "build:css": "postcss --no-map --use autoprefixer -o dist/styles.css src/css/*.css"
+  },
+  "devDependencies": {
+    "@types/wavesurfer.js": "^6.0.2",
+    "concurrently": "^7.0.0",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^9.1.0",
+    "typescript": "^4.6.3",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "wavesurfer.js": "^6.1.0"
+  }
+}

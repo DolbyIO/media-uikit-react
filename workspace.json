@@ -1,0 +1,92 @@
+{
+  "version": 2,
+  "projects": {
+    "design-system": {
+      "root": "packages/design-system",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-script",
+          "options": {
+            "script": "build-styles"
+          }
+        }
+      }
+    },
+    "core-ui": {
+      "root": "packages/core-ui",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["yarn run build:js", "yarn run build:css"],
+            "parallel": true
+          }
+        }
+      }
+    },
+    "media-uikit-react": {
+      "root": "packages/media-uikit-react",
+      "sourceRoot": "packages/media-uikit-react/src",
+      "projectType": "library",
+      "tags": [],
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:rollup",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/media-uikit-react",
+            "entryFile": "packages/media-uikit-react/src/index.ts",
+            "tsConfig": "packages/media-uikit-react/tsconfig.lib.json",
+            "project": "packages/media-uikit-react/package.json",
+            "rollupConfig": "packages/media-uikit-react/rollup.config.js",
+            "compiler": "babel",
+            "assets": [
+              {
+                "glob": "packages/media-uikit-react/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/media-uikit-react/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/media-uikit-react"],
+          "options": {
+            "jestConfig": "packages/media-uikit-react/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "react-chakra-ui": {
+      "root": "packages/react-chakra-ui",
+      "sourceRoot": "packages/react-chakra-ui/src",
+      "projectType": "package",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/react-chakra-ui",
+            "tsConfig": "packages/react-chakra-ui/tsconfig.json",
+            "webpackConfig": "@nrwl/react/plugins/webpack",
+            "index": "packages/react-chakra-ui/src/index.ts",
+            "main": "packages/react-chakra-ui/src/index.ts"
+          }
+        }
+      }
+    },
+    "react-chakra-ui-e2e": "packages/react-chakra-ui-e2e"
+  },
+  "implicitDependencies": {
+    "packages/design-system/tokens/**/*.json": ["react-chakra-ui"]
+  }
+}

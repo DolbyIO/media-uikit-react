@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@dolbyio/design-system": ["packages/design-system/index.ts"],
+      "@dolbyio/media-uikit-react": ["packages/media-uikit-react/src/index.ts"],
+      "@dolbyio/react-chakra-ui": ["packages/react-chakra-ui/src/index.ts"],
+      "@dolbyio/core-ui": ["packages/core-ui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

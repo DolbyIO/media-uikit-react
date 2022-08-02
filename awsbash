@@ -1,0 +1,44 @@
+#!/bin/bash
+# shellcheck disable=SC1117
+# Generic aws cli wrapper for deployment
+set -e
+function usage () {
+  echo "Usage: $0 <script-path> [awsbash command options]"
+  echo "Run bash script in AWS enabled environment"
+  echo
+  echo "<script-path> - path to script to be run, aws cli commands should use profile awsbash"
+}
+
+configure_aws_cli () {
+  (set -e; aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID}")
+  (set -e; aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY}")
+  (set -e; aws configure set default.region "${AWS_DEFAULT_REGION}")
+}
+
+configure_aws_profile () {
+  (set -x; aws configure set role_arn "${1}" --profile "${2}")
+  (set -x; aws configure set external_id "${3}" --profile "${2}")
+  (set -x; aws configure set source_profile default --profile "${2}")
+}
+
+# Extract cmd line args
+
+DEPLOY_ENV=ap3-dev
+
+#Populate from aws ssm
+echo -e "\e[96m>>> Setting up aws cli credentials\e[0m"
+configure_aws_cli
+
+echo -e "\e[96m>>> Retrieving configuration from SSM\e[0m"
+echo -e "\e[96m>>> Get role to access $DEPLOY_ENV \e[0m"
+ACCOUNT_ROLE=$(aws ssm get-parameter --name "/env/$DEPLOY_ENV/access-role" --region "$AWS_DEFAULT_REGION" --with-decryption --query Parameter.Value --output text)
+
+echo -e "\e[96m>>> Get external id to access $DEPLOY_ENV \e[0m"
+EXTERNAL_ID=$(aws ssm get-parameter --name "/env/$DEPLOY_ENV/external-id" --region "$AWS_DEFAULT_REGION" --with-decryption --query Parameter.Value --output text)
+
+
+configure_aws_profile "$ACCOUNT_ROLE" "awsbash" "$EXTERNAL_ID"
+
+echo -e "\033[32mBash command\033[0m"
+aws "$@"
+echo -e "\033[32mTask finished!\033[0m"
