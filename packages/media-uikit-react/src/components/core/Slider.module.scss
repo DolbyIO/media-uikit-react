@@ -1,0 +1,24 @@
+.mmappSlider {
+  width: 100%;
+  height: 33px;
+}
+.mmappSlider-thumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 187px;
+  top: 10px;
+  background: #2c2c31;
+  border-radius: 50%;
+  transform: rotate(-90deg);
+}
+.mmappSlider-track {
+  position: relative;
+  height: 4px;
+  top: 14px;
+  background: #b9b9ba;
+  border-radius: 3px;
+}
+.mmappSlider-track:first-of-type {
+  background: #aa33ff;
+}

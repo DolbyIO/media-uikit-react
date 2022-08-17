@@ -261,3 +261,6 @@ packages/core-sdk/docs/
 packages/react-sdk/docs/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,windows,yarn
+
+.env
+.env.*
