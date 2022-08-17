@@ -6,6 +6,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:run-script",
+          "outputs": ["packages/design-system/generated", "packages/design-system/assets"],
           "options": {
             "script": "build-styles"
           }
@@ -17,6 +18,8 @@
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:run-commands",
+          "outputs": ["packages/core-ui/dist"],
+
           "options": {
             "commands": ["yarn run build:js", "yarn run build:css"],
             "parallel": true
@@ -42,7 +45,7 @@
             "compiler": "babel",
             "assets": [
               {
-                "glob": "packages/media-uikit-react/README.md",
+                "glob": "README.md",
                 "input": ".",
                 "output": "."
               }

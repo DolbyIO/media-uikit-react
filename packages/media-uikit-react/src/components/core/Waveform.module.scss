@@ -1,0 +1,40 @@
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controls {
+  margin-top: 24px;
+  justify-content: space-between;
+
+  & .left-controls {
+    width: 90px;
+    justify-content: space-between;
+  }
+
+  & .right-controls {
+    width: 200px;
+    justify-content: space-between;
+  }
+
+  & .middle-controls {
+    width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .icon {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .slider {
+    width: 100%;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}

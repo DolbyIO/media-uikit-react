@@ -2,50 +2,27 @@
 
 # Overview
 
-The Dolby.io Music Mastering UIKit for React is designed to help React developers reduce the complexity of building and embedding a Dolby.io Music Mastering application for the web.
+The Dolby.io Music Mastering UIKit for React is designed to help React developers reduce the complexity of building and embedding a Dolby.io Music Mastering solution for the web.
 
-The package consists of the following elements:
+- To see a Music Mastering kickstart app that shows the UIKit in action, check out our [GitHub](https://github.com/dolbyio-samples/media-app-react-music-mastering).
 
-- **UI components**: Basic elements used to create a Music mastering web application.
-- **Utilities**: Set of functions offering media processing logic.
+The package consists of the following element:
+
+- **UI components**: Basic elements used to create a Music Mastering solution for the web.
 
 # Getting Started
 
-This guide demonstrates how to use the Music Mastering UI components to quickly build the foundations of a Music Mastering workflow for the web.
 
 ## Prerequisites
 
-- A Dolby.io account and authentication credentials.
 - React 16.5 or greater.
 - A supported browser: Chrome 100+, Safari 15+, Firefox 100+, or Edge 100+
 
-### How to get a Dolby.io account
-
-Before you build a Music Mastering application, you need to create a Dolby.io account. To set it up, go to https://dashboard.dolby.io/signnup and complete the form. After confirming your email address, you will be logged in.
-
-### Dolby.io dashboard
-
-After you log in to your Dolby.io account, you get access to the full dashboard where you can manage your account. From this page https://dashboard.dolby.io/dashboard/applications/summary you can manage your profile and billing.
-
-### How to get your authentication credentials
-
-Before you start building a Music Mastering application, you need to go to the Dolby.io developer dashboard and add a new app to get your App key and App secret. You will use these credentials to authenticate your application.
-
-Create your App key and App secret:
-
-1. Log in to the Dolby.io developer dashboard: https://dashboard.dolby.io/.
-2. Click **ADD NEW APP**.
-3. In the **Application Name** box, enter your application name.
-4. In the **API Keys** column, in the same row as your application, click **Get API keys**.
-5. Click **Copy** to copy your App key and App secret.
-
 ## Install the UIKit
 
-```
-npm install @dolbyio/media-uikit-react
-```
+Install the UIKit within the directory where your `package.json` file is located in your app.
 
-or
+Use [Yarn](https://yarnpkg.com/), install the UIKit with command:
 
 ```
 yarn add @dolbyio/media-uikit-react
@@ -53,106 +30,153 @@ yarn add @dolbyio/media-uikit-react
 
 ## Use a component
 
-### Example
+The following examples include a sample of the components available in the UIKit.
+
+### **Accordion**
+
+The Accordion component allows the user to show and hide sections of related content on a page.
+
+![accordian](assets/docs/Accordian.png)
 
 ```tsx
-import { Waveform, WaveformProps } from '@dolbyio/media-uikit-react';
+import { Accordion } from '@dolbyio/media-uikit-react';
 
-interface MyComponentProps extends WaveformProps {}
-
-const MyComponent = (props: MyComponentProps) => {
+const MyComponent = (props) => {
   return (
     <div>
-      <Waveform {...props}></Waveform>
+      <Accordion expanded heading={<h3>Options</h3>}>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+        </ul>
+      </Accordion>
     </div>
   );
 };
 ```
 
-## Use a utility
+<br>
+<br>
 
-### Media Client
+### **RadioGroup**
 
-#### Constructor
+The RadioGroup component allows users to make one selection out of a list of options and only number types are supported.
 
-The constructor takes a single JSON object as an argument with the following properties:
-| Arguments | Description |
-| ---- | ----------- |
-| server | _String_<br>The Dolby.io base API URL. |
-| apiKey | _String_<br>The Dolby.io Media API key. |
+![radio group](assets/docs/RadioGroup.png)
 
-#### Methods
+```tsx
+import { RadioGroup } from '@dolbyio/media-uikit-react';
 
-_apiCall_
-
-```ts
-apiCall({
-  requestParams: RequestParams;
-  restConfig?: RestConfig;
-  onResponse?: Function;
-  onProgress?: Function;
-})*
+const MyComponent = (props) => {
+  return (
+    <div>
+      <RadioGroup
+        defaultValue={3200}
+        name="Default"
+        onChangeValue={function noRefCheck() {}}
+        values={[16000, 32000, 44100, 48000]}
+      />
+    </div>
+  );
+};
 ```
 
-| Arguments     | Description                                                                                                                                                              |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| requestParams | [_RequestParams_](https://gitlab-sfo.dolby.net/cloud/dolbyio/-/blob/main/packages/media-uikit-react/src/utils/mapi-client.ts#L62)<br>Request related parameters.         |
-| restConfig    | [_RestConfig_](https://gitlab-sfo.dolby.net/cloud/dolbyio/-/blob/main/packages/media-uikit-react/src/utils/mapi-client.ts#L57)<br> Optional rest configuration override. |
-| onResponse    | _Function_<br> Optional callback called when the Music Mastering API completes processing.                                                                               |
-| onProgress    | _Function_<br>Optional callback called when the Music Mastering API is in progress. The parameter `progress` is a number between 0 and 100.                              |
+<br>
+<br>
 
-#### Example
+### **Slider**
 
-Below is an example of how to utilize the Media client utility to call the [Music Mastering Preview API](https://docs.dolby.io/media-apis/reference/media-music-mastering-preview-post).
+The Slider component allows the user to set values on a continuous scale.
 
-The client expects the following as input:
+![slider](assets/docs/Slider.png)
 
-- Server URL and corresponding Media API key.
-- The Media endpoint. For example, https://api.dolby.com/media/master.
-- The request body. To get more details about the Media APIs, see the [API Reference](https://docs.dolby.io/media-apis/docs).
+```tsx
+import { Slider } from '@dolbyio/media-uikit-react';
 
-```ts
-import { MapiClient } from '@dolbyio/media-uikit-react';
+const MyComponent = (props) => {
+  return (
+    <div>
+      <Slider defaultValue={30} max={100} min={0} onChange={function noRefCheck() {}} />
+    </div>
+  );
+};
+```
 
-const server = 'https://api.dolby.com';
-const apiKey = 'YOUR_MEDIA_API_KEY';
+<br>
+<br>
 
-const callMasteringPreviewApi = async () => {
-  const mapiClient = new MapiClient({
-    server,
-    apiKey,
-  });
-  await mapiClient.apiCall({
-    requestParams: {
-      endpoint: '/media/master/preview',
-      body: {
-        inputs: [
-          {
-            source: "https://path-to-input-file.com",
-            segment: {
-              0,
-              30,
-            },
-          },
-        ],
-        outputs: [{
-          destination: "https://path-to-output-file.com",
-          master: {
-            dynamic_eq: {
-              enable: true,
-              preset: "a",
-            },
-            loudness: { enable: true, loudness: -14 },
-          },
-        }],
-      },
-    },
-    onResponse: () => {
-      // API response callback. Called when the API completes processing.
-    },
-    onProgress: (progress: number) => {
-      // API in progress callback. Parameter progress is a number between 0 and 100.
-    }
-  });
+### **TextField**
+
+The TextField component allows users to enter and edit text.
+
+![text field](assets/docs/TextField.png)
+
+```tsx
+import { TextField } from '@dolbyio/media-uikit-react';
+
+const MyComponent = (props) => {
+  return (
+    <div>
+      <TextField
+        caption="Info about the input content here."
+        label="Label title"
+        onChange={function noRefCheck() {}}
+        placeholder="Placeholder text"
+        value=""
+      />
+    </div>
+  );
+};
+```
+
+<br>
+<br>
+
+### **Waveform**
+
+The Waveform component allows users to display a waveform of an audio track, choose a segment of the track for preview, select location of the playhead, adjust volume, and interact with transport controls and audio timeline bar. 
+
+![waveform](assets/docs/Waveform.png)
+
+```tsx
+import { Waveform } from '@dolbyio/media-uikit-react';
+
+const MyComponent = (props) => {
+  return (
+    <div>
+      <Waveform previewActive url="/media/my-track.wav" />
+    </div>
+  );
+};
+```
+
+<br>
+<br>
+
+### **AudioConfigurator**
+
+The AudioConfigurator component provides controls for selecting audio characteristics such as sample rate, channel count, and sample size.  
+
+![audio configurator](assets/docs/AudioConfigurator.png)
+
+```tsx
+import { AudioConfigurator } from '@dolbyio/media-uikit-react';
+
+const MyComponent = (props) => {
+  return (
+    <div>
+      <AudioConfigurator
+        channelCounts={[1, 2]}
+        defaultChannelCount={1}
+        defaultSampleRate={44100}
+        defaultSampleSize={16}
+        onChangeChannelCount={function noRefCheck() {}}
+        onChangeSampleRate={function noRefCheck() {}}
+        onChangeSampleSize={function noRefCheck() {}}
+        sampleRates={[44100, 48000]}
+        sampleSizes={[16, 24, 32]}
+      />
+    </div>
+  );
 };
 ```
