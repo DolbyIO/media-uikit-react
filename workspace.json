@@ -48,6 +48,11 @@
                 "glob": "README.md",
                 "input": ".",
                 "output": "."
+              },
+              {
+                "glob": "LICENSE",
+                "input": ".",
+                "output": "."
               }
             ]
           }
