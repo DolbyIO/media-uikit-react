@@ -1,3 +1,7 @@
+[![Build Package](https://github.com/DolbyIO/media-uikit-react/actions/workflows/build-package.yml/badge.svg)](https://github.com/DolbyIO/media-uikit-react/actions/workflows/build-package.yml)
+[![npm](https://img.shields.io/npm/v/@dolbyio/media-uikit-react)](https://www.npmjs.com/package/@dolbyio/media-uikit-react)
+[![License](https://img.shields.io/github/license/DolbyIO/media-uikit-react)](LICENSE)
+
 # Dolby.io Media Music Mastering UIKit for React
 
 # Overview
@@ -11,7 +15,6 @@ The package consists of the following element:
 - **UI components**: Basic elements used to create a Music Mastering solution for the web.
 
 # Getting Started
-
 
 ## Prerequisites
 
@@ -33,7 +36,6 @@ yarn add @dolbyio/media-uikit-react
 # Start the dev server
 npm start
 ```
-
 
 ## Use a component
 
@@ -133,7 +135,7 @@ const MyComponent = (props) => {
 
 ### **Waveform**
 
-The Waveform component allows users to display a waveform of an audio track, choose a segment of the track for preview, select location of the playhead, adjust volume, and interact with transport controls and audio timeline bar. 
+The Waveform component allows users to display a waveform of an audio track, choose a segment of the track for preview, select location of the playhead, adjust volume, and interact with transport controls and audio timeline bar.
 
 ```tsx
 import { Waveform } from '@dolbyio/media-uikit-react';
@@ -152,7 +154,7 @@ const MyComponent = (props) => {
 
 ### **AudioConfigurator**
 
-The AudioConfigurator component provides controls for selecting audio characteristics such as sample rate, channel count, and sample size.  
+The AudioConfigurator component provides controls for selecting audio characteristics such as sample rate, channel count, and sample size.
 
 ```tsx
 import { AudioConfigurator } from '@dolbyio/media-uikit-react';
