@@ -7,6 +7,6 @@
     "build-styles": "style-dictionary build"
   },
   "devDependencies": {
-    "style-dictionary": "^3.7.0"
+    "style-dictionary": "^3.8.0"
   }
 }
